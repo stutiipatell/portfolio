@@ -29,6 +29,10 @@
       --radius-md: 12px;
       --radius-lg: 18px;
       --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --clever: #f472b6;
+      --clever-rgb: 244, 114, 182;
+      --eviswis: #34d399;
+      --eviswis-rgb: 52, 211, 153;
     }
 
     * {
@@ -235,6 +239,40 @@
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
     }
 
+    /* Per-project accent: CLEVER-VI (live, human-in-the-loop) vs E-VisWis (offline, single-user) */
+    .project-card.tone-clever {
+      border-top: 3px solid var(--clever);
+    }
+    .project-card.tone-clever:hover {
+      border-color: rgba(var(--clever-rgb), 0.4);
+    }
+    .project-card.tone-eviswis {
+      border-top: 3px solid var(--eviswis);
+    }
+    .project-card.tone-eviswis:hover {
+      border-color: rgba(var(--eviswis-rgb), 0.4);
+    }
+
+    .badge-mode {
+      padding: 4px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-mode::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+    .tone-clever .badge-mode::before { background: var(--clever); }
+    .tone-eviswis .badge-mode::before { background: var(--eviswis); }
+
     .project-inner {
       padding: 40px;
     }
@@ -350,32 +388,103 @@
       font-weight: bold;
     }
 
-    /* Interactive Pipeline State Machine Display */
-    .state-machine {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 20px 0;
+    /* Diagram wrapper for inline SVGs */
+    .diagram-box {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      margin-top: 24px;
+    }
+    .diagram-box h3 {
+      font-size: 1.15rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .diagram-box .diagram-caption {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+    }
+    .diagram-box svg {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
-    .state-pill {
-      padding: 10px 16px;
+    /* Highlighted technical callout, pulled out of the bullet list */
+    .callout {
+      display: flex;
+      gap: 16px;
       background: var(--code-bg);
       border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-size: 0.85rem;
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-top: 20px;
+    }
+    .callout .callout-label {
       font-family: 'JetBrains Mono', monospace;
-      color: #e2e8f0;
-      flex: 1 1 calc(25% - 12px);
-      min-width: 140px;
-      text-align: center;
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+      width: 90px;
+      padding-top: 2px;
+    }
+    .callout p {
+      font-size: 0.93rem;
+      color: #cbd5e1;
+      margin: 0;
+    }
+    .callout p strong {
+      color: #fff;
     }
 
-    .state-pill strong {
+    /* Media placeholder: before/after or demo clip, meant to be swapped for real assets */
+    .media-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .media-placeholder {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background:
+        repeating-linear-gradient(45deg, var(--surface-elevated), var(--surface-elevated) 10px, var(--surface) 10px, var(--surface) 20px);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+    }
+    .media-placeholder .media-label {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .media-placeholder .media-label strong {
       display: block;
-      color: var(--accent);
-      margin-bottom: 4px;
+      color: var(--text-main);
       font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+    .media-caption {
+      grid-column: 1 / -1;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      text-align: center;
+      margin-top: -6px;
+    }
+
+    @media (max-width: 640px) {
+      .media-row {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* Code Repos Grid */
@@ -443,8 +552,12 @@
       .project-inner {
         padding: 24px;
       }
-      .state-pill {
-        flex: 1 1 100%;
+      .callout {
+        flex-direction: column;
+        gap: 6px;
+      }
+      .callout .callout-label {
+        width: auto;
       }
     }
   </style>
@@ -488,7 +601,7 @@
     <!-- Flagship Project 1: CLEVER-VI -->
     <section id="clever-vi" aria-labelledby="clever-heading">
       <div class="container">
-        <div class="project-card">
+        <div class="project-card tone-clever">
           <div class="project-inner">
             <div class="project-header-flex">
               <div>
@@ -497,12 +610,71 @@
                   Joint work with Namra Patel, Dr. Ramnarayan Yadav (IITRAM), and Dr. Pragya Verma (Reykjavik University) • <em>Under Review</em>
                 </div>
               </div>
-              <span class="badge-status">Lead Author</span>
+              <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+                <span class="badge-status">Lead Author</span>
+                <span class="badge-mode">Live · Multi-user</span>
+              </div>
             </div>
 
             <p class="project-desc">
               Conventional Remote Sighted Assistance (RSA) requires visually impaired (VI) individuals to share unconstrained, raw camera feeds with remote assistants, exposing sensitive medical records, personal screens, and unconsenting bystanders. CLEVER-VI resolves this through a three-tier, edge-processed live communication architecture where sensitive visual classes are selectively masked on-device before media frames ever leave the user’s local network.
             </p>
+
+            <!-- Proof-of-concept: before/after frame comparison.
+                 REPLACE the two placeholders below with real frame captures from a test call:
+                 left = raw camera frame, right = the same frame after on-device masking. -->
+            <div class="media-row">
+              <div class="media-placeholder">
+                <div class="media-label"><strong>Raw camera frame</strong>Swap in a real capture showing a bystander's face or a document in view</div>
+              </div>
+              <div class="media-placeholder">
+                <div class="media-label"><strong>Masked frame sent to assistant</strong>Same frame after on-device detection + blur — this is what actually leaves the device</div>
+              </div>
+              <p class="media-caption">Before / after: the only pair of images that proves the privacy claim on this page</p>
+            </div>
+
+            <!-- Architecture: on-device processing boundary + what leaves the network -->
+            <div class="diagram-box">
+              <h3>Three-tier processing architecture</h3>
+              <p class="diagram-caption">Detection, authentication, and masking all happen inside the boundary below — the network only ever carries the masked stream.</p>
+              <svg viewBox="0 0 680 300" role="img" aria-labelledby="clever-arch-title clever-arch-desc">
+                <title id="clever-arch-title">CLEVER-VI on-device processing architecture</title>
+                <desc id="clever-arch-desc">A dashed boundary labeled "VI user's device, all processing local" contains three stages: capture, detect and authenticate, and mask. An arrow leaves the boundary to a "network" node, then to a "remote assistant" node labeled "sees masked stream only".</desc>
+                <defs>
+                  <marker id="cv-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M2 1L8 5L2 9" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </marker>
+                </defs>
+
+                <rect x="20" y="30" width="430" height="200" rx="16" fill="rgba(56,189,248,0.05)" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
+                <text x="40" y="56" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="600" fill="#38bdf8">VI user's device — all processing local</text>
+
+                <g>
+                  <rect x="40" y="80" width="120" height="120" rx="10" fill="#161b2a" stroke="#232a3e" stroke-width="1"/>
+                  <text x="100" y="130" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="600" fill="#f3f4f6">Capture</text>
+                  <text x="100" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#94a3b8">Camera frame</text>
+
+                  <rect x="180" y="80" width="140" height="120" rx="10" fill="#161b2a" stroke="#232a3e" stroke-width="1"/>
+                  <text x="250" y="122" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="600" fill="#f3f4f6">Detect + auth</text>
+                  <text x="250" y="142" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#94a3b8">YOLO detection,</text>
+                  <text x="250" y="158" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#94a3b8">face auth check</text>
+
+                  <rect x="340" y="80" width="90" height="120" rx="10" fill="#161b2a" stroke="#232a3e" stroke-width="1"/>
+                  <text x="385" y="130" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="600" fill="#f3f4f6">Mask</text>
+                  <text x="385" y="150" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#94a3b8">Blur pass</text>
+
+                  <line x1="160" y1="140" x2="178" y2="140" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#cv-arrow)"/>
+                  <line x1="320" y1="140" x2="338" y2="140" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#cv-arrow)"/>
+                </g>
+
+                <line x1="450" y1="140" x2="510" y2="140" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#cv-arrow)"/>
+                <text x="480" y="128" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10" fill="#94a3b8">masked only</text>
+
+                <rect x="510" y="105" width="150" height="70" rx="10" fill="#161b2a" stroke="#f472b6" stroke-width="1"/>
+                <text x="585" y="135" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="600" fill="#f3f4f6">Remote assistant</text>
+                <text x="585" y="153" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#94a3b8">sees masked stream only</text>
+              </svg>
+            </div>
 
             <!-- Empirical Performance Benchmarks -->
             <div class="stats-grid">
@@ -525,39 +697,61 @@
             </div>
 
             <!-- Dynamic 4-State Privacy Lifecycle -->
-            <div class="details-box">
-              <h3>Dynamic 4-State Privacy Management Lifecycle</h3>
-              <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
-                Rather than applying static filters, CLEVER-VI enforces an adaptive finite state machine that respects user agency dynamically during live calls:
+            <div class="diagram-box">
+              <h3>Dynamic 4-state privacy management lifecycle</h3>
+              <p class="diagram-caption">
+                Rather than applying static filters, CLEVER-VI enforces an adaptive finite state machine that respects user agency dynamically during live calls.
               </p>
-              <div class="state-machine">
-                <div class="state-pill">
-                  <strong>1. UNSEEN</strong>
-                  Target class not yet observed in current visual scene
-                </div>
-                <div class="state-pill">
-                  <strong>2. PENDING</strong>
-                  Detected at runtime; queued for audio-prompted user decision
-                </div>
-                <div class="state-pill">
-                  <strong>3. BLURRED</strong>
-                  Suppression active via multi-step downsampling & Gaussian blur
-                </div>
-                <div class="state-pill">
-                  <strong>4. UNBLURRED</strong>
-                  Whitelisted by explicit command or fail-open timeout
-                </div>
-              </div>
+              <svg viewBox="0 0 680 336" role="img" aria-labelledby="clever-fsm-title clever-fsm-desc">
+                <title id="clever-fsm-title">CLEVER-VI four-state privacy lifecycle</title>
+                <desc id="clever-fsm-desc">A detected class moves from Unseen to Pending, then branches to either Blurred, via suppression, or Unblurred, via explicit command or timeout.</desc>
+                <defs>
+                  <marker id="fsm-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M2 1L8 5L2 9" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </marker>
+                </defs>
+
+                <g>
+                  <rect x="210" y="40" width="260" height="56" rx="8" fill="#161b2a" stroke="#232a3e" stroke-width="1"/>
+                  <text x="340" y="61" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="600" fill="#f3f4f6">Unseen</text>
+                  <text x="340" y="80" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" fill="#94a3b8">no sensitive class in frame</text>
+                </g>
+                <line x1="340" y1="96" x2="340" y2="136" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#fsm-arrow)"/>
+                <text x="352" y="120" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#94a3b8">class detected</text>
+
+                <g>
+                  <rect x="210" y="140" width="260" height="56" rx="8" fill="#161b2a" stroke="#f59e0b" stroke-width="1"/>
+                  <text x="340" y="161" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="600" fill="#f3f4f6">Pending</text>
+                  <text x="340" y="180" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" fill="#94a3b8">audio-prompted user decision</text>
+                </g>
+
+                <path d="M280 196 L260 220 L260 240" fill="none" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#fsm-arrow)"/>
+                <path d="M400 196 L510 220 L510 240" fill="none" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#fsm-arrow)"/>
+
+                <g>
+                  <rect x="150" y="240" width="220" height="56" rx="8" fill="#161b2a" stroke="#f472b6" stroke-width="1"/>
+                  <text x="260" y="261" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="600" fill="#f3f4f6">Blurred</text>
+                  <text x="260" y="280" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" fill="#94a3b8">multi-step downsample + blur</text>
+                </g>
+                <g>
+                  <rect x="400" y="240" width="220" height="56" rx="8" fill="#161b2a" stroke="#38bdf8" stroke-width="1"/>
+                  <text x="510" y="261" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="14" font-weight="600" fill="#f3f4f6">Unblurred</text>
+                  <text x="510" y="280" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" fill="#94a3b8">explicit command or fail-open</text>
+                </g>
+              </svg>
             </div>
 
             <!-- Systems Engineering & Field Evaluation -->
             <div class="details-box" style="margin-top: 20px;">
-              <h3>Engineering Highlights & User Study</h3>
+              <h3>Engineering highlights & user study</h3>
               <ul>
-                <li><strong>Privacy-by-Construction Pipeline:</strong> Integrated YOLO object detection, OpenCV multi-stage blurring, and biometric facial authentication on-device to guarantee the authorized user is never masked while third-party bystanders are protected.</li>
-                <li><strong>Temporal Redundancy Caching:</strong> Engineered a grayscale Mean Absolute Difference (MAD) frame-similarity check paired with a SHA-256 content-addressable LRU cache, bypassing expensive neural inference on static frames.</li>
-                <li><strong>Empirical Field Study:</strong> Evaluated with 7 completely blind participants across 21 randomized trials (medical prescription reading, key searching in clutter, and medicine bottle identification). 100% of participants reported heightened comfort sharing live feeds due to client-side masking.</li>
+                <li><strong>Privacy-by-construction pipeline:</strong> Integrated YOLO object detection, OpenCV multi-stage blurring, and biometric facial authentication on-device to guarantee the authorized user is never masked while third-party bystanders are protected.</li>
+                <li><strong>Empirical field study:</strong> Evaluated with 7 completely blind participants across 21 randomized trials (medical prescription reading, key searching in clutter, and medicine bottle identification). 100% of participants reported heightened comfort sharing live feeds due to client-side masking.</li>
               </ul>
+              <div class="callout">
+                <div class="callout-label">Why it matters</div>
+                <p><strong>Temporal redundancy caching:</strong> most frames in a live call barely change, so re-running detection on each one is wasted work. A grayscale mean-absolute-difference check flags near-identical frames, and a SHA-256 content-addressed LRU cache lets CLEVER-VI skip the neural pass entirely on static frames — this is the main lever behind the 7.37&nbsp;ms mean latency figure above. <em>[Add: baseline latency without this cache, and the hardware it was measured on, so the comparison is verifiable.]</em></p>
+              </div>
             </div>
           </div>
         </div>
@@ -567,7 +761,7 @@
     <!-- Flagship Project 2: E-VisWis -->
     <section id="e-viswis" aria-labelledby="eviswis-heading">
       <div class="container">
-        <div class="project-card">
+        <div class="project-card tone-eviswis">
           <div class="project-inner">
             <div class="project-header-flex">
               <div>
@@ -576,12 +770,67 @@
                   Research conducted at IITRAM in collaboration with Reykjavik University • <em>Under Review</em>
                 </div>
               </div>
-              <span class="badge-status">Lead Author</span>
+              <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+                <span class="badge-status">Lead Author</span>
+                <span class="badge-mode">Offline · Single-user</span>
+              </div>
             </div>
 
             <p class="project-desc">
               E-VisWis is an offline, edge-native assistive vision system built for older adults and visually impaired individuals. It bridges the gap between complex visual editing tools and accessibility, allowing users to independently explore spatial surroundings and execute object-level redaction (Hide/Remove) via dual-input voice and tactile commands without remote cloud exposure.
             </p>
+
+            <!-- Proof-of-concept: before/after scene transformation.
+                 REPLACE the two placeholders below with a real photo pair from the app:
+                 left = original scene, right = the same scene after a Hide/Remove command. -->
+            <div class="media-row">
+              <div class="media-placeholder">
+                <div class="media-label"><strong>Original scene</strong>Swap in a real photo — e.g. a desk with a credit card and a document visible</div>
+              </div>
+              <div class="media-placeholder">
+                <div class="media-label"><strong>After a Hide/Remove command</strong>Same photo with the redacted object removed, driven by a voice or tactile command</div>
+              </div>
+              <p class="media-caption">Before / after: shows the transformation a reviewer otherwise has to imagine from the bullet points below</p>
+            </div>
+
+            <!-- Architecture: fully offline input-to-output loop -->
+            <div class="diagram-box">
+              <h3>Fully offline interaction loop</h3>
+              <p class="diagram-caption">Every stage runs on-device — no frame or command ever reaches a server.</p>
+              <svg viewBox="0 0 680 200" role="img" aria-labelledby="eviswis-arch-title eviswis-arch-desc">
+                <title id="eviswis-arch-title">E-VisWis offline architecture</title>
+                <desc id="eviswis-arch-desc">Voice or tactile input feeds an edge vision ensemble of YOLOv8, Haar Cascade, and Tesseract OCR, which drives a redaction engine that produces the on-device output. All four stages sit inside a dashed boundary labeled fully offline.</desc>
+                <defs>
+                  <marker id="ev-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M2 1L8 5L2 9" fill="none" stroke="#34d399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </marker>
+                </defs>
+
+                <rect x="20" y="20" width="640" height="160" rx="16" fill="rgba(52,211,153,0.05)" stroke="#34d399" stroke-width="1" stroke-dasharray="4 4"/>
+                <text x="40" y="44" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="600" fill="#34d399">Fully offline, on-device</text>
+
+                <rect x="40" y="60" width="130" height="100" rx="10" fill="#161b2a" stroke="#232a3e" stroke-width="1"/>
+                <text x="105" y="100" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="600" fill="#f3f4f6">Voice / tactile</text>
+                <text x="105" y="118" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#94a3b8">input</text>
+
+                <rect x="205" y="60" width="180" height="100" rx="10" fill="#161b2a" stroke="#232a3e" stroke-width="1"/>
+                <text x="295" y="94" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="600" fill="#f3f4f6">Edge vision ensemble</text>
+                <text x="295" y="114" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#94a3b8">YOLOv8, Haar Cascade,</text>
+                <text x="295" y="130" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#94a3b8">Tesseract OCR</text>
+
+                <rect x="420" y="60" width="130" height="100" rx="10" fill="#161b2a" stroke="#232a3e" stroke-width="1"/>
+                <text x="485" y="100" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="13" font-weight="600" fill="#f3f4f6">Redaction</text>
+                <text x="485" y="118" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#94a3b8">engine</text>
+
+                <rect x="585" y="70" width="60" height="80" rx="10" fill="#161b2a" stroke="#34d399" stroke-width="1"/>
+                <text x="615" y="100" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="12" font-weight="600" fill="#f3f4f6">Out</text>
+                <text x="615" y="118" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="10" fill="#94a3b8">-put</text>
+
+                <line x1="170" y1="110" x2="203" y2="110" stroke="#34d399" stroke-width="1.5" marker-end="url(#ev-arrow)"/>
+                <line x1="385" y1="110" x2="418" y2="110" stroke="#34d399" stroke-width="1.5" marker-end="url(#ev-arrow)"/>
+                <line x1="550" y1="110" x2="583" y2="110" stroke="#34d399" stroke-width="1.5" marker-end="url(#ev-arrow)"/>
+              </svg>
+            </div>
 
             <div class="stats-grid">
               <div class="stat-box">
@@ -603,12 +852,15 @@
             </div>
 
             <div class="details-box">
-              <h3>System Architecture & HCI Evaluation</h3>
+              <h3>System architecture & HCI evaluation</h3>
               <ul>
-                <li><strong>Multimodal Interaction Loop:</strong> Implemented dual-input mode switching with offline VOSK voice recognition prioritized alongside non-blocking keyboard interrupts, avoiding auditory clutter through spatial audio cueing and a 5-second cooldown cache.</li>
-                <li><strong>Edge Vision Ensemble:</strong> Coordinated YOLOv8 for COCO-trained common objects, Haar Cascade classifiers for rapid 15ms facial boundary checks, and Tesseract 5.0 OCR for sensitive document boundary detection.</li>
-                <li><strong>Field Study Findings:</strong> Evaluated with 21 participants (11 older adults ages 65–85 and 10 individuals with visual impairment). The hide/remove transformation pipeline successfully allowed participants to redact identifying personal documents, credit cards, and screens prior to photo-sharing.</li>
+                <li><strong>Multimodal interaction loop:</strong> Implemented dual-input mode switching with offline VOSK voice recognition prioritized alongside non-blocking keyboard interrupts, avoiding auditory clutter through spatial audio cueing and a 5-second cooldown cache.</li>
+                <li><strong>Field study findings:</strong> Evaluated with 21 participants (11 older adults ages 65–85 and 10 individuals with visual impairment). The hide/remove transformation pipeline successfully allowed participants to redact identifying personal documents, credit cards, and screens prior to photo-sharing.</li>
               </ul>
+              <div class="callout">
+                <div class="callout-label">Why it matters</div>
+                <p><strong>Edge vision ensemble:</strong> rather than one general-purpose model, E-VisWis routes each detection task to a specialist: YOLOv8 for COCO-trained common objects, Haar Cascade for a 15&nbsp;ms facial boundary check, and Tesseract&nbsp;5.0 OCR for document boundaries. Splitting the work this way keeps every stage fast enough to run entirely offline on modest hardware, which is what makes the 0&nbsp;KB cloud exposure figure above possible in practice, not just in principle.</p>
+              </div>
             </div>
           </div>
         </div>
