@@ -346,43 +346,6 @@
       margin-bottom: 24px;
     }
 
-    /* Media Gallery Grid for Pictures & Diagrams */
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin: 20px 0;
-    }
-
-    .media-card {
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-    }
-
-    .media-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: contain;
-      display: block;
-      background: #111520;
-      padding: 8px;
-    }
-
-    .media-caption {
-      padding: 12px 16px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-    }
-
-    .media-caption strong {
-      display: block;
-      color: #fff;
-      margin-bottom: 2px;
-    }
-
     /* Case study editorial typography blocks */
     .case-section {
       margin-top: 24px;
@@ -490,7 +453,7 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Selected Technical Work Grid */
+    /* Supporting Technical Work Grid */
     .repos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -594,6 +557,221 @@
         padding: 24px;
       }
     }
+
+    /* ---------- HCI portfolio refinements ---------- */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .hero-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .hero-action.primary {
+      background: var(--accent);
+      color: #061018;
+      border-color: var(--accent);
+    }
+
+    .hero-action:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .research-note {
+      margin-top: 24px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--accent);
+      background: rgba(56, 189, 248, 0.055);
+      border-radius: 0 10px 10px 0;
+      color: #cbd5e1;
+      font-size: 0.94rem;
+    }
+
+    .research-note strong {
+      color: #fff;
+    }
+
+    .case-lead {
+      font-size: 1.02rem;
+      color: #dbe4ef;
+      max-width: 860px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+
+    .visual-block {
+      margin: 30px 0 34px;
+    }
+
+    .visual-block h4 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .visual-block p.visual-intro {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    .figure-single {
+      background: #0b0e15;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .figure-single img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 620px;
+      object-fit: contain;
+      background: #0b0e15;
+    }
+
+    .figure-single figcaption,
+    .visual-card figcaption {
+      padding: 12px 15px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .visual-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .visual-card {
+      margin: 0;
+      background: #0b0e15;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .visual-card img {
+      display: block;
+      width: 100%;
+      height: 210px;
+      object-fit: contain;
+      background: #0b0e15;
+    }
+
+    .quote-card {
+      margin: 28px 0;
+      padding: 26px 28px;
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--clever);
+      border-radius: 12px;
+    }
+
+    .quote-card blockquote {
+      font-size: 1.16rem;
+      line-height: 1.6;
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .quote-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .insight-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .insight-card span {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      margin-bottom: 7px;
+    }
+
+    .insight-card h5 {
+      color: #fff;
+      font-size: 0.94rem;
+      margin-bottom: 6px;
+    }
+
+    .insight-card p {
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .metric-callout {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border: 1px solid rgba(52, 211, 153, 0.25);
+      background: rgba(52, 211, 153, 0.05);
+      border-radius: 12px;
+      color: #dbe4ef;
+    }
+
+    .metric-callout strong {
+      color: var(--eviswis);
+    }
+
+    .section-kicker {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .supporting-work {
+      opacity: 0.98;
+    }
+
+    @media (max-width: 850px) {
+      .visual-grid,
+      .insight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .visual-card img {
+        height: auto;
+        max-height: 420px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -605,10 +783,10 @@
     <div class="container nav-content">
       <div class="logo">Stuti Patel <span>/ Portfolio</span></div>
       <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
+        <li><a href="#work">Research</a></li>
         <li><a href="#approach">Approach</a></li>
+        <li><a href="#engineering">Technical Work</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#resume">Resume</a></li>
       </ul>
     </div>
   </nav>
@@ -617,18 +795,25 @@
     <!-- Hero Section -->
     <header class="hero">
       <div class="container">
-        <div class="hero-badge">HCI Research & Interactive Computing</div>
+        <div class="hero-badge">Human-Centered AI · Interactive Computing</div>
         <h1>
-          I build interactive AI systems that people can actually <span class="gradient-text">trust</span>.
+          I design AI systems that people can actually <span class="gradient-text">trust</span>.
         </h1>
         <p>
-          My work explores how computer vision, privacy, and accessibility come together in real-world assistive technologies. I design systems, study them directly with users, and use what I learn to rethink the interaction.
+          I work at the intersection of computer vision, accessibility, privacy, and interactive systems. My research combines system building with user research and empirical evaluation to understand how intelligent technologies can remain useful while preserving people's agency and control.
         </p>
         <div class="meta-tags">
-          <span class="meta-tag">AI / Computer Vision</span>
+          <span class="meta-tag">Human-Centered AI</span>
           <span class="meta-tag">Accessibility</span>
-          <span class="meta-tag">Privacy & Usable Control</span>
-          <span class="meta-tag">Human-Centered Systems</span>
+          <span class="meta-tag">Usable Privacy</span>
+          <span class="meta-tag">Interactive Systems</span>
+        </div>
+        <div class="hero-actions">
+          <a class="hero-action primary" href="#work">Explore research ↓</a>
+          <a class="hero-action" href="https://github.com/stutiipatell" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+        <div class="research-note">
+          <strong>My HCI lens:</strong> I am especially interested in systems where technical accuracy is only part of the problem—because users also need understandable interactions, meaningful control, and evidence that the system respects their privacy and autonomy.
         </div>
       </div>
     </header>
@@ -638,33 +823,33 @@
       <div class="container">
         <div class="section-header">
           <h2 id="approach-heading">Research Approach</h2>
-          <p>How I investigate and build user-centered interactive systems</p>
+          <p>How I move from human needs to working interactive systems</p>
         </div>
         <div class="approach-grid">
           <div class="approach-card">
             <div class="approach-num">01</div>
-            <h3>Understand the User</h3>
-            <p>User studies, qualitative interviews, and observations with vulnerable communities.</p>
+            <h3>Understand People</h3>
+            <p>User studies and direct engagement with people affected by the problem.</p>
           </div>
           <div class="approach-card">
             <div class="approach-num">02</div>
-            <h3>Identify the Problem</h3>
-            <p>Pinpointing friction points around privacy, trust, autonomy, and accessibility.</p>
+            <h3>Frame the Problem</h3>
+            <p>Translate observations into interaction, privacy, and accessibility requirements.</p>
           </div>
           <div class="approach-card">
             <div class="approach-num">03</div>
-            <h3>Build the System</h3>
-            <p>Developing edge AI, computer vision pipelines, and real-time interaction mechanisms.</p>
+            <h3>Prototype the System</h3>
+            <p>Build the technical and interaction layers needed to test the idea.</p>
           </div>
           <div class="approach-card">
             <div class="approach-num">04</div>
             <h3>Evaluate with People</h3>
-            <p>Measuring performance metrics alongside rigorous usability and qualitative feedback.</p>
+            <p>Combine system performance with participant behavior, feedback, and qualitative findings.</p>
           </div>
           <div class="approach-card">
             <div class="approach-num">05</div>
-            <h3>Iterate</h3>
-            <p>Using empirical findings to redesign the system architecture and interaction loop.</p>
+            <h3>Turn Evidence into Design</h3>
+            <p>Use what people reveal during evaluation to refine the system and interaction.</p>
           </div>
         </div>
       </div>
@@ -685,7 +870,7 @@
               <div>
                 <h3 class="project-title">CLEVER-VI: Privacy-Preserving Live Remote Assistance</h3>
                 <div class="project-collab">
-                  Joint work with Stuti Patel (Lead Author), Namra Patel, Dr. Ramnarayan Yadav, and Dr. Pragya Verma • <em>Under Review</em>[cite: 2, 3]
+                  Research collaboration with Namra Patel, Dr. Ramnarayan Yadav, and Dr. Pragya Verma • <em>Under Review</em>
                 </div>
               </div>
               <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
@@ -695,67 +880,82 @@
             </div>
 
             <p class="project-desc">
-              Conventional Remote Sighted Assistance (RSA) requires visually impaired (VI) individuals to share unconstrained raw camera feeds with remote assistants, exposing sensitive medical records, personal screens, and unconsenting bystanders. CLEVER-VI resolves this through an edge-processed live communication architecture where sensitive visual classes are selectively masked on-device before media leaves the user's network[cite: 3].
+              Conventional Remote Sighted Assistance (RSA) requires visually impaired (VI) individuals to share unconstrained raw camera feeds with remote assistants, exposing sensitive medical records, personal screens, and unconsenting bystanders. CLEVER-VI resolves this through an edge-processed live communication architecture where sensitive visual classes are selectively masked on-device before media leaves the user's network.
             </p>
 
-            <!-- CLEVER-VI Image Gallery -->
-            <div class="media-grid">
-              <div class="media-card">
-                <img src="images/ar11.jpg" alt="CLEVER-VI Architecture & Interface Layout" />
-                <div class="media-caption">
-                  <strong>System Architecture & UI</strong>
-                  Edge processing pipeline, state machine, and console integration.
-                </div>
-              </div>
-              <div class="media-card">
-                <img src="images/1.png" alt="CLEVER-VI User Control Prompt" />
-                <div class="media-caption">
-                  <strong>Privacy Decision Prompt</strong>
-                  Dynamic runtime prompt allowing users to blur or allow classes.
-                </div>
-              </div>
-              <div class="media-card">
-                <img src="images/3.jpg" alt="Redacted Video Stream Preview" />
-                <div class="media-caption">
-                  <strong>Redacted Stream View</strong>
-                  Remote assistant view showing selective blurring in effect.
-                </div>
-              </div>
-              <div class="media-card">
-                <img src="images/2.png" alt="Configuration Complete Console" />
-                <div class="media-caption">
-                  <strong>Configuration Console</strong>
-                  Live monitoring and voice channel status interface.
-                </div>
+            <div class="visual-block">
+              <span class="section-kicker">System + interaction</span>
+              <h4>How privacy is enforced before transmission</h4>
+              <p class="visual-intro">The system keeps visual processing at the edge and gives the user a decision point before sensitive content reaches the remote assistant.</p>
+
+              <figure class="figure-single">
+                <img src="images/ar11.png" alt="CLEVER-VI system architecture showing the visually impaired user's camera, edge processing layer, privacy state machine, selective masking, and remote assistant console">
+                <figcaption>System architecture: live video enters the edge device, where detection, privacy-state decisions, and selective masking happen before the redacted stream is shared.</figcaption>
+              </figure>
+
+              <div class="visual-grid" style="margin-top:14px;">
+                <figure class="visual-card">
+                  <img src="images/1.png" alt="CLEVER-VI privacy decision prompt asking whether a detected class should be blurred or allowed">
+                  <figcaption><strong>01 · Decide.</strong> The user can allow or blur a detected visual class.</figcaption>
+                </figure>
+                <figure class="visual-card">
+                  <img src="images/3.png" alt="CLEVER-VI redacted video stream shown to the remote assistant">
+                  <figcaption><strong>02 · Redact.</strong> Sensitive content is masked before leaving the user's network.</figcaption>
+                </figure>
+                <figure class="visual-card">
+                  <img src="images/clever-flowchart.png" alt="CLEVER-VI interaction flowchart">
+                  <figcaption><strong>03 · Understand.</strong> The interaction flow connects detection, privacy decisions, and remote assistance.</figcaption>
+                </figure>
               </div>
             </div>
 
             <div class="case-section">
               <h4>The Problem & User Insights</h4>
-              <p>During preliminary field interactions, visually impaired participants voiced deep anxiety over ambient visual exposure. A participant's question—<em>“Why does your system need to see my home if it can't even protect what it sees?”</em>—highlighted that loss of agency is a major barrier to adopting assistive tools[cite: 2].</p>
+              <p>During preliminary field interactions, visually impaired participants voiced concern about ambient visual exposure and the loss of control over what a remote assistant could see.</p>
+              <div class="quote-card">
+                <blockquote>“Why does your system need to see my home if it can't even protect what it sees?”</blockquote>
+                <p>Participant insight that shaped the privacy-control requirement.</p>
+              </div>
             </div>
 
             <div class="case-section">
               <h4>Design Question & Solution</h4>
-              <p><strong>How can a person receive remote assistance without surrendering control over what their camera shares?</strong> CLEVER-VI introduces a four-state privacy model combined with edge object detection and selective blurring[cite: 2, 3]. The user remains in full control of sensitive classes before transmission[cite: 3].</p>
+              <p><strong>How can a person receive remote assistance without surrendering control over what their camera shares?</strong> CLEVER-VI introduces a four-state privacy model combined with edge object detection and selective blurring. The user remains in full control of sensitive classes before transmission.</p>
             </div>
 
             <div class="case-section">
               <h4>Research & Evaluation</h4>
-              <p>Evaluated with 7 VI participants across 21 trial sessions spanning document reading, object retrieval, and social video communication[cite: 2, 3]. The system achieved <strong>91.25% privacy recall</strong> while preserving non-private content and maintaining real-time WebRTC streaming at 30 fps[cite: 2, 3].</p>
+              <p>Evaluated with 7 VI participants across 21 trial sessions spanning document reading, object retrieval, and social video communication. The system achieved <strong>91.25% privacy recall</strong> while preserving non-private content and maintaining real-time WebRTC streaming at 30 fps.</p>
             </div>
 
             <div class="case-section">
-              <h4>What I Learned</h4>
-              <p>Clutter significantly affected key-finding tasks, and participants noted a strong preference for automatic detection of sensitive documents. Furthermore, adoption depended partly on familiarity with video calling tools—insights that shaped our iterative design guidelines.</p>
+              <h4>What I Learned from Evaluation</h4>
+              <p>The study showed that the interaction could not be separated from the environment and users' existing habits. These findings became design implications rather than simply post-study observations.</p>
+              <div class="insight-grid">
+                <div class="insight-card">
+                  <span>OBSERVATION 01</span>
+                  <h5>Clutter slowed key finding</h5>
+                  <p>Visual complexity affected object retrieval performance.</p>
+                </div>
+                <div class="insight-card">
+                  <span>OBSERVATION 02</span>
+                  <h5>Users wanted proactive privacy support</h5>
+                  <p>Participants preferred automatic detection of sensitive documents.</p>
+                </div>
+                <div class="insight-card">
+                  <span>OBSERVATION 03</span>
+                  <h5>Familiar interaction patterns mattered</h5>
+                  <p>Adoption was influenced by familiarity with video-calling tools.</p>
+                </div>
+              </div>
             </div>
 
             <div class="contribution-box">
               <h4>My Contribution</h4>
               <ul>
-                <li>Core system architecture and WebRTC communication pipeline design[cite: 2, 3].</li>
-                <li>Computer vision integration (YOLO-based edge detection and face recognition)[cite: 2, 3].</li>
-                <li>User-study design, trial moderation, and qualitative/quantitative data analysis[cite: 2, 3].</li>
+                <li>Core system architecture and WebRTC communication pipeline design.</li>
+                <li>Computer vision integration (YOLO-based edge detection and face recognition).</li>
+                <li>User-study design, trial moderation, and qualitative/quantitative data analysis.</li>
               </ul>
             </div>
           </div>
@@ -768,7 +968,7 @@
               <div>
                 <h3 class="project-title">E-VisWis: Edge-Enabled Assistive Vision & Privacy Preservation</h3>
                 <div class="project-collab">
-                  Joint work with Stuti Patel, Dr. Ramnarayan Yadav, and Dr. Pragya Verma • <em>Under Review</em>[cite: 2, 4]
+                  Joint work with Stuti Patel, Dr. Ramnarayan Yadav, and Dr. Pragya Verma • <em>Under Review</em>
                 </div>
               </div>
               <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
@@ -778,51 +978,49 @@
             </div>
 
             <p class="project-desc">
-              Can assistive vision provide useful scene understanding without requiring users to surrender their visual data to third-party cloud servers? E-VisWis performs local, on-device scene interpretation and selective image transformation (hiding/removing private objects) to empower older adults and visually impaired users with complete local control[cite: 2, 4].
+              Can assistive vision provide useful scene understanding without requiring users to surrender their visual data to third-party cloud servers? E-VisWis performs local, on-device scene interpretation and selective image transformation (hiding/removing private objects) to empower older adults and visually impaired users with complete local control.
             </p>
 
-            <!-- E-VisWis Image Gallery -->
-            <div class="media-grid">
-              <div class="media-card">
-                <img src="images/Exp_setup.jpeg" alt="E-VisWis Experimental Setup" />
-                <div class="media-caption">
-                  <strong>Experimental Setup</strong>
-                  Phone streaming via DroidCam to edge processing laptop.
-                </div>
-              </div>
-              <div class="media-card">
-                <img src="images/Fig1.png" alt="E-VisWis System Architecture Diagram" />
-                <div class="media-caption">
-                  <strong>System Framework</strong>
-                  Bird's eye view of the multi-modal input and core processing layers.
-                </div>
-              </div>
-              <div class="media-card">
-                <img src="images/flowchart_image (1).jpg" alt="E-VisWis System Flowchart" />
-                <div class="media-caption">
-                  <strong>Operational Flowchart</strong>
-                  Language selection, mode switching, and transformation cycles.
-                </div>
+            <div class="visual-block">
+              <span class="section-kicker">Research evidence</span>
+              <h4>From system architecture to participant evaluation</h4>
+              <div class="visual-grid">
+                <figure class="visual-card">
+                  <img src="images/Exp_setup.jpeg" alt="E-VisWis experimental setup used during participant evaluation">
+                  <figcaption><strong>Study setup.</strong> Evaluation of assistive vision in realistic indoor and outdoor contexts.</figcaption>
+                </figure>
+                <figure class="visual-card">
+                  <img src="images/Fig1.png" alt="E-VisWis system architecture">
+                  <figcaption><strong>Architecture.</strong> On-device scene interpretation and privacy-preserving image transformation.</figcaption>
+                </figure>
+                <figure class="visual-card">
+                  <img src="images/flowchart_image (1).jpg" alt="E-VisWis interaction and processing flowchart">
+                  <figcaption><strong>Interaction flow.</strong> The processing pipeline connecting input, recognition, and privacy transformation.</figcaption>
+                </figure>
               </div>
             </div>
 
             <div class="case-section">
               <h4>Participant Study Overview</h4>
-              <p>Evaluated rigorously with <strong>21 participants</strong> (11 older adults and 10 visually impaired individuals) in indoor and outdoor settings to validate both usability and object recognition efficacy[cite: 2, 4].</p>
+              <p>Evaluated rigorously with <strong>21 participants</strong> (11 older adults and 10 visually impaired individuals) in indoor and outdoor settings to validate both usability and object recognition efficacy.</p>
               
+              <div class="metric-callout">
+                <strong>What these numbers mean:</strong> the evaluation was not only a model benchmark. It tested whether an assistive system could provide useful scene understanding while keeping privacy-preserving transformations under local control.
+              </div>
+
               <div class="stats-grid">
                 <div class="stat-box">
                   <div class="stat-title">Object Identification Accuracy</div>
                   <div class="stat-bar-group">
-                    <div class="stat-row"><span>Older Adults:</span> <strong>89.16%</strong>[cite: 2]</div>
-                    <div class="stat-row"><span>Visually Impaired:</span> <strong>93.96%</strong>[cite: 2]</div>
+                    <div class="stat-row"><span>Older Adults:</span> <strong>89.16%</strong></div>
+                    <div class="stat-row"><span>Visually Impaired:</span> <strong>93.96%</strong></div>
                   </div>
                 </div>
                 <div class="stat-box">
                   <div class="stat-title">Image Transformation Accuracy</div>
                   <div class="stat-bar-group">
-                    <div class="stat-row"><span>Older Adults:</span> <strong>87.88%</strong>[cite: 2]</div>
-                    <div class="stat-row"><span>Visually Impaired:</span> <strong>73.28%</strong>[cite: 2]</div>
+                    <div class="stat-row"><span>Older Adults:</span> <strong>87.88%</strong></div>
+                    <div class="stat-row"><span>Visually Impaired:</span> <strong>73.28%</strong></div>
                   </div>
                 </div>
               </div>
@@ -836,9 +1034,9 @@
             <div class="contribution-box">
               <h4>My Contribution</h4>
               <ul>
-                <li>Implemented the end-to-end edge AI pipeline using YOLOv8, Haar Cascade, and Tesseract OCR[cite: 2, 4].</li>
-                <li>Designed the multi-modal interaction framework supporting voice commands and keyboard inputs[cite: 4].</li>
-                <li>Conducted participant testing across 21 user sessions and led data aggregation and analysis[cite: 2, 4].</li>
+                <li>Implemented the end-to-end edge AI pipeline using YOLOv8, Haar Cascade, and Tesseract OCR.</li>
+                <li>Designed the multi-modal interaction framework supporting voice commands and keyboard inputs.</li>
+                <li>Conducted participant testing across 21 user sessions and led data aggregation and analysis.</li>
               </ul>
             </div>
           </div>
@@ -847,18 +1045,18 @@
       </div>
     </section>
 
-    <!-- Selected Technical Work -->
-    <section id="engineering" aria-labelledby="eng-heading">
+    <!-- Supporting Technical Work -->
+    <section id="engineering" class="supporting-work" aria-labelledby="eng-heading">
       <div class="container">
         <div class="section-header">
-          <h2 id="eng-heading">Selected Technical Work</h2>
-          <p>Core systems and algorithmic implementations built from scratch</p>
+          <h2 id="eng-heading">Supporting Technical Work</h2>
+          <p>Technical projects that strengthen my foundation for building and evaluating interactive AI systems</p>
         </div>
         <div class="repos-grid">
           <div class="repo-card">
             <div>
-              <h3>Attention Mechanism from Scratch</h3>
-              <p>Re-implemented a decoder-only transformer based on "Attention Is All You Need", featuring multi-head attention and causal masking, trained character-by-character on TinyShakespeare[cite: 2].</p>
+              <h3>Transformer Attention from Scratch</h3>
+              <p>Re-implemented a decoder-only transformer based on "Attention Is All You Need", featuring multi-head attention and causal masking, trained character-by-character on TinyShakespeare.</p>
               <div class="tech-pill-container">
                 <span class="tech-pill">Python</span>
                 <span class="tech-pill">PyTorch</span>
@@ -870,8 +1068,8 @@
 
           <div class="repo-card">
             <div>
-              <h3>Mini Vector Database</h3>
-              <p>Built a custom vector database from scratch, training a sentence embedding model using contrastive learning and implementing efficient cosine-similarity search mechanisms[cite: 2].</p>
+              <h3>Mini Vector Database from Scratch</h3>
+              <p>Built a custom vector database from scratch, training a sentence embedding model using contrastive learning and implementing efficient cosine-similarity search mechanisms.</p>
               <div class="tech-pill-container">
                 <span class="tech-pill">Python</span>
                 <span class="tech-pill">Embeddings</span>
@@ -893,7 +1091,10 @@
         </div>
         <div class="about-content">
           <p>
-            I am a Computer Science graduate interested in building intelligent systems that remain useful, understandable, and respectful of the people who use them. My work centers on bridging robust machine learning engineering with human-centered empirical research to solve accessibility and privacy challenges in real-world environments.
+            I am a Computer Science graduate working at the intersection of AI, accessibility, privacy, and human-centered computing. My research has focused on assistive vision systems where technical performance alone is not enough: people also need understandable interactions, meaningful control, and evidence that the system respects their privacy and autonomy.
+          </p>
+          <p>
+            Across my research projects, I have built computer-vision and edge-processing systems, worked directly with older adults and visually impaired participants, and used their feedback to rethink system behavior and interaction design. I am interested in continuing this work through HCI research on human-centered AI and assistive technologies.
           </p>
           <div class="about-grid">
             <div class="about-item">
@@ -917,7 +1118,7 @@
   <!-- Footer / Contact -->
   <footer id="resume">
     <div class="container">
-      <p>Stuti Patel &bull; <a href="mailto:patel.stuti.22co@iitram.ac.in">Email</a> &bull; <a href="https://github.com/stutiipatell" target="_blank" rel="noopener">GitHub</a> &bull; <a href="#" target="_blank" rel="noopener">Google Scholar</a> &bull; <a href="#" target="_blank" rel="noopener">Resume</a></p>
+      <p>Stuti Patel &bull; <a href="mailto:patel.stuti.22co@iitram.ac.in">Email</a> &bull; <a href="https://github.com/stutiipatell" target="_blank" rel="noopener">GitHub</a> &bull; <a href="resume.pdf" target="_blank" rel="noopener">Resume</a></p>
     </div>
   </footer>
 
