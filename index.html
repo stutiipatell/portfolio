@@ -346,6 +346,43 @@
       margin-bottom: 24px;
     }
 
+    /* Media Gallery Grid for Pictures & Diagrams */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .media-card {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .media-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      display: block;
+      background: #111520;
+      padding: 8px;
+    }
+
+    .media-caption {
+      padding: 12px 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .media-caption strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
     /* Case study editorial typography blocks */
     .case-section {
       margin-top: 24px;
@@ -661,6 +698,38 @@
               Conventional Remote Sighted Assistance (RSA) requires visually impaired (VI) individuals to share unconstrained raw camera feeds with remote assistants, exposing sensitive medical records, personal screens, and unconsenting bystanders. CLEVER-VI resolves this through an edge-processed live communication architecture where sensitive visual classes are selectively masked on-device before media leaves the user's network[cite: 3].
             </p>
 
+            <!-- CLEVER-VI Image Gallery -->
+            <div class="media-grid">
+              <div class="media-card">
+                <img src="images/ar11.jpg" alt="CLEVER-VI Architecture & Interface Layout" />
+                <div class="media-caption">
+                  <strong>System Architecture & UI</strong>
+                  Edge processing pipeline, state machine, and console integration.
+                </div>
+              </div>
+              <div class="media-card">
+                <img src="images/1.png" alt="CLEVER-VI User Control Prompt" />
+                <div class="media-caption">
+                  <strong>Privacy Decision Prompt</strong>
+                  Dynamic runtime prompt allowing users to blur or allow classes.
+                </div>
+              </div>
+              <div class="media-card">
+                <img src="images/3.jpg" alt="Redacted Video Stream Preview" />
+                <div class="media-caption">
+                  <strong>Redacted Stream View</strong>
+                  Remote assistant view showing selective blurring in effect.
+                </div>
+              </div>
+              <div class="media-card">
+                <img src="images/2.png" alt="Configuration Complete Console" />
+                <div class="media-caption">
+                  <strong>Configuration Console</strong>
+                  Live monitoring and voice channel status interface.
+                </div>
+              </div>
+            </div>
+
             <div class="case-section">
               <h4>The Problem & User Insights</h4>
               <p>During preliminary field interactions, visually impaired participants voiced deep anxiety over ambient visual exposure. A participant's question—<em>“Why does your system need to see my home if it can't even protect what it sees?”</em>—highlighted that loss of agency is a major barrier to adopting assistive tools[cite: 2].</p>
@@ -711,6 +780,31 @@
             <p class="project-desc">
               Can assistive vision provide useful scene understanding without requiring users to surrender their visual data to third-party cloud servers? E-VisWis performs local, on-device scene interpretation and selective image transformation (hiding/removing private objects) to empower older adults and visually impaired users with complete local control[cite: 2, 4].
             </p>
+
+            <!-- E-VisWis Image Gallery -->
+            <div class="media-grid">
+              <div class="media-card">
+                <img src="images/Exp_setup.jpeg" alt="E-VisWis Experimental Setup" />
+                <div class="media-caption">
+                  <strong>Experimental Setup</strong>
+                  Phone streaming via DroidCam to edge processing laptop.
+                </div>
+              </div>
+              <div class="media-card">
+                <img src="images/Fig1.png" alt="E-VisWis System Architecture Diagram" />
+                <div class="media-caption">
+                  <strong>System Framework</strong>
+                  Bird's eye view of the multi-modal input and core processing layers.
+                </div>
+              </div>
+              <div class="media-card">
+                <img src="images/flowchart_image (1).jpg" alt="E-VisWis System Flowchart" />
+                <div class="media-caption">
+                  <strong>Operational Flowchart</strong>
+                  Language selection, mode switching, and transformation cycles.
+                </div>
+              </div>
+            </div>
 
             <div class="case-section">
               <h4>Participant Study Overview</h4>
